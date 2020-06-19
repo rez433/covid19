@@ -1,9 +1,9 @@
+<script>
+	import CovidStat from '../components/CovidStat.svelte';
+	import CovidChart from '../components/CovidChart.svelte';
+	import TableContainer from '../components/TableContainer.svelte';
+</script>
 
-<svelte:head>
-	<title>Covid 19 stats</title>
-</svelte:head>
-
-<h1>Covid 19 stats</h1>
-
-
-<p><strong>Covid 19 stats</strong></p>
+<CovidStat />
+<CovidChart />
+<TableContainer />
