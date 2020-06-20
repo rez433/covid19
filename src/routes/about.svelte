@@ -1,7 +1,10 @@
 <svelte:head>
-	<title>About</title>
+	<title>About Covid 19</title>
 </svelte:head>
 
-<h1>About Covid-19</h1>
-
-<p>About covid 19</p>
+<div class="section header">
+	<div class="container">
+		<h1>About</h1>
+		<p>The data about Covid 19 virus</p>
+	</div>
+</div>
