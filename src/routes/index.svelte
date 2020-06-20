@@ -4,10 +4,11 @@
 
 	export async function preload() {
 		try{
+			//throw new Error('Bad');
 			const usStats = await request.usStats();
 			return {usStats}
 		}catch(e) {
-
+			this.error(500, "Bad Entry point, try again");
 		}
 		
 	}
@@ -18,8 +19,6 @@
 	import CovidChart from '../components/CovidChart.svelte';
 	import TableContainer from '../components/TableContainer.svelte';
 	export let usStats;
-	console.log(usStats, "usStats")
-
 </script>
 
 <svlete:head>
