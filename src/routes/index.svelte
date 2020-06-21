@@ -12,6 +12,7 @@
 		}
 		
 	}
+
 </script>
 
 <script>
@@ -32,5 +33,5 @@
 </div>
 
 <CovidStat {...usStats}/>
-<CovidChart />
+<CovidChart/>
 <TableContainer />

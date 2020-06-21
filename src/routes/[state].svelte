@@ -1,16 +1,20 @@
 <script context="module">
-    import states from '../data/states.js';
+    import states from "../data/states.js";
+    import request from "../data/request.js";
+
 
     export async function preload(page) {
-        let state = page.params["state"].toUpperCase();
-        if(states.Names.find(s => s[1] === state) === undefined) {
+        const state = page.params["state"];
+        const stateName = states.Names.find(s => s[1].toLowerCase() === state)[0];
+        if(states.Names.find(s => s[1].toLowerCase() === state) === undefined) {
             this.error(404, 'State Not Found');
             return;
         }
         try{
-        return { state: page.params['state']}
+            const stateStats = await request.stateStats(state);
+            return { state:stateName, stateStats}
 		}catch(e) {
-			this.error(500, "Bad Entry point, try again");
+			
 		}
     }
 </script>
@@ -19,18 +23,20 @@
     import CovidStat from '../components/CovidStat.svelte';
 	import CovidChart from '../components/CovidChart.svelte';
 	import TableContainer from '../components/TableContainer.svelte';
-    export let state
+    export let state;
+    export let stateStats;
+    console.log("city1: " +state)
 </script>
 
 <svlete:head>
-    <title>Covid 19 - {state.toUpperCase()}</title>
+    <title>Covid 19 - {state}</title>
 </svlete:head>
 
 <div class="section header">
     <div class="container">
-        <h1>Covid 19 - {state.toUpperCase()}</h1>
+        <h1>Covid 19 - {state}</h1>
     </div>    
 </div>
 
-<CovidStat />
+<CovidStat {...stateStats}/>
 <CovidChart />
