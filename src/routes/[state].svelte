@@ -12,7 +12,8 @@
         }
         try{
             const stateStats = await request.stateStats(state);
-            return { state:stateName, stateStats}
+            const historicState = await request.historicState(state);
+            return { state:stateName, stateStats, historicState}
 		}catch(e) {
 			
 		}
@@ -25,7 +26,8 @@
 	import TableContainer from '../components/TableContainer.svelte';
     export let state;
     export let stateStats;
-    console.log("city1: " +state)
+    export let historicState;
+   
 </script>
 
 <svlete:head>
@@ -39,4 +41,4 @@
 </div>
 
 <CovidStat {...stateStats}/>
-<CovidChart />
+<CovidChart historicData={historicState} title= "{state} covid-19"/>

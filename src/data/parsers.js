@@ -14,6 +14,10 @@ function historicUS(historicData) {
     return parseHistoric(historicData)
 
 }
+function historicState(historicData) {
+    return parseHistoric(historicData)
+
+}
 
 function parseHistoric (historicData) {
     return [
@@ -85,5 +89,6 @@ function parseStats(rawStats) {
 export default {
     usStats,
     stateStats,
-    historicUS
+    historicUS,
+    historicState
 }
