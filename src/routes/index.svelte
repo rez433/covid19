@@ -6,7 +6,8 @@
 		try{
 			//throw new Error('Bad');
 			const usStats = await request.usStats();
-			return {usStats}
+			const historicUS = await request.historicUS();
+			return {usStats, historicUS}
 		}catch(e) {
 			this.error(500, "Bad Entry point, try again");
 		}
@@ -20,6 +21,8 @@
 	import CovidChart from '../components/CovidChart.svelte';
 	import TableContainer from '../components/TableContainer.svelte';
 	export let usStats;
+	export let historicUS;
+	
 </script>
 
 <svlete:head>
@@ -33,5 +36,5 @@
 </div>
 
 <CovidStat {...usStats}/>
-<CovidChart/>
+<CovidChart {...historicUS}/>
 <TableContainer />
