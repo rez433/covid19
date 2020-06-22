@@ -23,7 +23,6 @@ async function historicUS() {
     
 
     const historic_US = parsers.historicUS(res.data);
-    console.log(historic_US)
 
     return historic_US;
 }
