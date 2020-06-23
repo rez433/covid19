@@ -1,5 +1,6 @@
 import format from './format';
 import moment from 'moment';
+import states from "../data/states.js";
 
 function usStats(data) {
     const [usStatRaw] = data;
@@ -18,6 +19,20 @@ function historicState(historicData) {
     return parseHistoric(historicData)
 
 }
+
+
+function parsedStatesTable(statesData) {
+    return statesData.map((data) => {
+        const stateName = states.Names.find(s => s[1]=== data.state)[0];
+        return {
+            cases: format.number(data.positive),
+            deaths: format.number(data.death),
+            tested: format.number(data.totalTestResults),
+            stateName
+        };
+    });
+}
+
 
 function parseHistoric (historicData) {
     return [
@@ -90,5 +105,6 @@ export default {
     usStats,
     stateStats,
     historicUS,
-    historicState
+    historicState,
+    parsedStatesTable
 }

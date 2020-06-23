@@ -4,9 +4,9 @@
 
 	export async function preload() {
 		try{
-			//throw new Error('Bad');
 			const usStats = await request.usStats();
 			const historicUS = await request.historicUS();
+			const statesDataTable = await request.statesTable();
 			return {usStats, historicUS}
 		}catch(e) {
 			this.error(500, "Bad Entry point, try again");
@@ -22,6 +22,9 @@
 	import TableContainer from '../components/TableContainer.svelte';
 	export let usStats;
 	export let historicUS;
+	export let statesDataTable;
+	
+
 	
 </script>
 
@@ -37,4 +40,5 @@
 
 <CovidStat {...usStats}/>
 <CovidChart historicData={historicUS} title="US Covid-19"/>
+
 <TableContainer />
