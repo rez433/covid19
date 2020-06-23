@@ -28,6 +28,7 @@ function parsedStatesTable(statesData) {
             cases: format.number(data.positive),
             deaths: format.number(data.death),
             tested: format.number(data.totalTestResults),
+            state: data.state,
             stateName
         };
     });

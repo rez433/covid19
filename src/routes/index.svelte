@@ -7,7 +7,7 @@
 			const usStats = await request.usStats();
 			const historicUS = await request.historicUS();
 			const statesDataTable = await request.statesTable();
-			return {usStats, historicUS}
+			return {usStats, historicUS, statesDataTable}
 		}catch(e) {
 			this.error(500, "Bad Entry point, try again");
 		}
@@ -23,6 +23,7 @@
 	export let usStats;
 	export let historicUS;
 	export let statesDataTable;
+
 	
 
 	
@@ -41,4 +42,4 @@
 <CovidStat {...usStats}/>
 <CovidChart historicData={historicUS} title="US Covid-19"/>
 
-<TableContainer />
+<TableContainer data={statesDataTable}/>

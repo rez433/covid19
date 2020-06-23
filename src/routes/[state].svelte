@@ -4,7 +4,7 @@
 
 
     export async function preload(page) {
-        const state = page.params["state"];
+        const state = page.params["state"].toLowerCase();
         const stateName = states.Names.find(s => s[1].toLowerCase() === state)[0];
         if(states.Names.find(s => s[1].toLowerCase() === state) === undefined) {
             this.error(404, 'State Not Found');
